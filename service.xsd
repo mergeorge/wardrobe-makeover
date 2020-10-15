@@ -20,4 +20,10 @@
 	    </xs:sequence>
 	</xs:complexType>
 </xs:element>
+<xs:simpleType name="contact">
+<xs:restriction base="xs:integer">
+<xs:minExclusive value="10"></xs:minExclusive>
+<xs:maxExclusive value="11"></xs:maxExclusive>
+</xs:restriction>
+</xs:simpleType>
 </xs:schema>

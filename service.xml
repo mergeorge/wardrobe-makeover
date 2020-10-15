@@ -15,9 +15,9 @@ xsi:noNamespaceSchemaLocation="service.xsd">
 	</booking>
 <booking>
 		<id>1257845</id>
-		<category>Stoles</category>
-		<size>S-M</size>
-		<brand>Zara</brand>
+		<category>Skirts</category>
+		<size>S-L</size>
+		<brand>Gucci</brand>
 		<instock>Yes</instock>
 		<contact>2020-08-20</contact>
 
@@ -33,9 +33,9 @@ xsi:noNamespaceSchemaLocation="service.xsd">
 	</booking>
 	<booking>
 		<id>1256513</id>
-		<category>Stoles</category>
-		<size>S-M</size>
-		<brand>Zara</brand>
+		<category>Jackets</category>
+		<size>S-XL</size>
+		<brand>In-Store</brand>
 		<instock>Yes</instock>
 		<contact>2020-08-20</contact>
 
