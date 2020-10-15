@@ -12,7 +12,7 @@
 				        <xs:element name="size" type="xs:string"/>
 				        <xs:element name="brand" type="xs:string"/>
 				        <xs:element name="instock" type="xs:string"/>
-						<xs:element name="contact" type="xs:integer"/>
+						<xs:element name="contact" type="ty"/>
             			
 				    </xs:sequence>
 				</xs:complexType>
@@ -20,10 +20,10 @@
 	    </xs:sequence>
 	</xs:complexType>
 </xs:element>
-<xs:simpleType name="contact">
+<xs:simpleType name="ty">
 <xs:restriction base="xs:integer">
-<xs:minExclusive value="10"></xs:minExclusive>
-<xs:maxExclusive value="11"></xs:maxExclusive>
+<xs:minExclusive value="999999999"></xs:minExclusive>
+<xs:maxExclusive value="10000000000"></xs:maxExclusive>
 </xs:restriction>
 </xs:simpleType>
 </xs:schema>
