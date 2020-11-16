@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,9 +23,9 @@ function validateForm() {
     var mobile = document.contactForm.mobile.value;
     var country = document.contactForm.country.value;
     var gender = document.contactForm.gender.value;
-    
+    var file = document.contactForm.file.value;
 	// Defining error variables with a default value
-    var nameErr = emailErr = mobileErr = countryErr = genderErr = true;
+    var nameErr = emailErr = mobileErr = countryErr = genderErr = fileErr =true;
     
     // Validate name
     if (name == "") {   
@@ -43,8 +44,7 @@ function validateForm() {
          if (at < 1 || ( dot - at < 2 )) {         
             alert("Incorrect Email-ID")           
             return false;      
-         }       
-    
+         }  
     // Validate mobile number
     if (mobile == "") {   
              alert("Mobile number is required");  
@@ -58,19 +58,23 @@ function validateForm() {
     
     
     // Validate country
-    if(country == "Select") {
+    if(country == "Please select a country") {
         alert("Please select your country");
-    } 
+        return false;
+    }
     // Validate gender
     if(gender == "") {
         alert( "Please select your gender");
-    } else {
-        printError("genderErr", "");
-        genderErr = false;
-    }
+        return false;
+    } 
+    //validate file upload
+    if(file == "") {
+        alert("Please select your file");
+        return false;
+    } 
     
     // Prevent the form from being submitted if there are any errors
-    if((name || email || mobile || country|| gender) == true) {
+    if((name || email || mobile || country|| gender || file) == true) {
        return false;
     } else {
         // Creating a string from input data for preview
@@ -79,8 +83,8 @@ function validateForm() {
                           "Email Address: " + email + "\n" +
                           "Mobile Number: " + mobile + "\n" +
                           "Country: " + country + "\n" +
-                          "Gender: " + gender + "\n";
-        
+                          "Gender: " + gender + "\n"
+                          "Image : Selected" + file + "\n";
         // Display input data in a dialog box before submitting the form
         alert(dataPreview);
     }
@@ -120,6 +124,8 @@ function validateForm() {
         <input placeholder="Mobile Number" type="number" name="mobile" maxlength="10">
         <div class="error" id="mobile"></div>
     </div> <br>
+
+
     <div class="row1">
         <label><b>Country:</b></label>&nbsp;&nbsp;
         <select name="country">
@@ -131,23 +137,26 @@ function validateForm() {
         </select>
         <div class="error" id="country"></div>
      </div>&nbsp; 
+
     <div class="gender"> 
         <label> <p>Gender: </p></label> &nbsp;
         <div class="form-inline" align="left">
-            <label> Male <input style="padding-right: -300px ;" type="radio" name="gender" value="male"> </label>
-            <label> Female <input style="padding-right: -300px ;" type="radio" name="gender" value="male"> </label>
+            <label> Male <span lang="en-in">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span> 
+			<input style="padding-right: -300px; width: 72%;" type="radio" name="gender" value="male"><br>
+			Femal<span lang="en-in">e</span> <input style="padding-right: -300px ;" type="radio" name="gender" value="female"> </label>
  </div>
         <div class="error" id="gender"></div>
     </div> 
 
     <p>Upload an Image</p>
-    <input type="file" id="file"
+    <input type="file" id="file" name="file"
         onchange="return fileValidation()" /> 
 
 
 
 
-        <div id="imagePreview"></div> 
+        <div id="file"></div> 
         <script> 
             function fileValidation() { 
                 var fileInput =  
