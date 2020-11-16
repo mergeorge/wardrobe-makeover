@@ -1,0 +1,121 @@
+body{
+    margin:0;
+    padding:0;
+    background: url(https://images.unsplash.com/photo-1512436991641-6745cdb1723f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80.jpg);
+    background-size:cover;
+    background-position:center;
+    font-family:sans-serif;
+    opacity:0.75;
+}
+.loginbox{
+    width: 380px;
+    height:540px;
+    background:rgb(241, 236, 236);
+    color : #000;
+    top : 50%;
+    left :50%;
+    position:absolute;
+    transform:translate(-50%,-50%);
+    box-sizing:border-box;
+    padding:70px 30px;
+    box-shadow: 20px 20px 10px black;
+}
+.avatar{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    position:absolute;
+    top:-50px;
+    left:calc(50%  - 50px);
+}
+.loginbox h1{
+    margin:0;
+    padding:0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+.loginbox p{
+    margin:0;
+    padding:0;
+    font-weight: bold;
+ }
+ .loginbox input{
+     width: 80%;
+     margin-bottom: 20px;
+ }
+.loginbox input[type="text"], input[type="password"]
+{
+    border:none;
+    border-bottom: 1px solid #000;
+    background: transparent;
+    outline: none;
+    height:40px;
+    color: #000;
+    font-size: 16px;
+}
+.loginbox input[type="button"]
+{
+    border-radius: 8px;
+    background-color: wheat;
+    border: none;
+    color:black;
+    text-align: center;
+    width: 300px;
+    transition: all 0.5s;
+    cursor:pointer;
+    margin: 5px;
+    text-shadow: 2px 2px 2px grey;
+    font-size:20px;
+    padding: 5px;
+}
+.loginbox input[type="reset"]
+{
+    border-radius: 8px;
+    background-color:wheat;
+    border: none;
+    color:black;
+    text-align: center;
+    width: 300px;
+    transition: all 0.5s;
+    cursor:pointer;
+    margin: 5px;
+    text-shadow: 2px 2px 2px grey;
+    font-size:20px;
+    padding: 5px;
+}
+.loginbox input[type="button"]:hover
+{
+    cursor:pointer;
+    background:#ffc107;
+    color:#000;
+}
+.loginbox input[type="reset"]:hover
+{
+    cursor:pointer;
+    background:#ffc107;
+    color:#000;
+}
+.loginbox a:hover
+{
+color: #e72222;
+}
+.title{
+   position: absolute;
+   left:2%;
+  
+ }
+.title h1{
+  color:ivory;
+  font-size: 50px;
+  font-family: Haettenschweiler;
+  text-shadow: 3px 3px 3px #000;
+}
+.title h2{
+    color:rgb(220, 228, 228);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-shadow: 3px 3px 3px #000;
+}
+*{
+    margin:0;
+    padding:0;
+  }

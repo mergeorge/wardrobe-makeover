@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LaStoffa Registration form</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+
+<script>
+// Defining a function to display error message
+function printError(elemId, hintMsg) {
+    document.getElementById(elemId).innerHTML = hintMsg;
+}
+
+// Defining a function to validate form 
+function validateForm() {
+    // Retrieving the values of form elements 
+    var name = document.contactForm.name.value;
+    var email = document.contactForm.email.value;
+    var mobile = document.contactForm.mobile.value;
+    var country = document.contactForm.country.value;
+    var gender = document.contactForm.gender.value;
+    
+	// Defining error variables with a default value
+    var nameErr = emailErr = mobileErr = countryErr = genderErr = true;
+    
+    // Validate name
+    if (name == "") {   
+             alert("Name required. Please enter your name");  
+                return false;     
+            }   
+            if(name.length<5){  
+                alert("Username should be atleast 5 characters");  
+                return false;  
+            }  
+    
+    // Validate email address
+    at = email.indexOf("@");      
+         dot = email.lastIndexOf(".");      
+           
+         if (at < 1 || ( dot - at < 2 )) {         
+            alert("Incorrect Email-ID")           
+            return false;      
+         }       
+    
+    // Validate mobile number
+    if (mobile == "") {   
+             alert("Mobile number is required");  
+                return false;     
+            }   
+            if(mobile.length<10 || mobile.length>10){  
+                alert("Mobile number should be of 10 digits");  
+                return false;  
+            }  
+    
+    
+    
+    // Validate country
+    if(country == "Select") {
+        alert("Please select your country");
+    } 
+    // Validate gender
+    if(gender == "") {
+        alert( "Please select your gender");
+    } else {
+        printError("genderErr", "");
+        genderErr = false;
+    }
+    
+    // Prevent the form from being submitted if there are any errors
+    if((name || email || mobile || country|| gender) == true) {
+       return false;
+    } else {
+        // Creating a string from input data for preview
+        var dataPreview = "You've entered the following details: \n" +
+                          "Full Name: " + name + "\n" +
+                          "Email Address: " + email + "\n" +
+                          "Mobile Number: " + mobile + "\n" +
+                          "Country: " + country + "\n" +
+                          "Gender: " + gender + "\n";
+        
+        // Display input data in a dialog box before submitting the form
+        alert(dataPreview);
+    }
+};
+</script>
+</head>
+<body>
+
+
+  
+    <div class="title">
+        <h1> LA STOFFA </h1>
+        
+      </div>
+  
+     <div class="loginbox">
+    <img src="1.png" class="avatar">
+  
+     <h1>Your stylist is just around the corner....</h1>
+  
+
+
+<form name="contactForm" onsubmit="return validateForm()" action="home.html" method="post">
+    
+    <div class="row">
+        
+        <input placeholder="Full Name" type="text" name="name">
+        <div class="error" id="name"></div>
+     </div>
+    <div class="row">
+      
+        <input placeholder="Email Address" type="text" name="email">
+        <div class="error" id="email"></div>
+    </div>
+    <div class="row">
+        
+        <input placeholder="Mobile Number" type="number" name="mobile" maxlength="10">
+        <div class="error" id="mobile"></div>
+    </div> <br>
+    <div class="row1">
+        <label><b>Country:</b></label>&nbsp;&nbsp;
+        <select name="country">
+            <option>Please select a country</option>
+            <option>Australia</option>
+            <option>India</option>
+            <option>United States</option>
+            <option>United Kingdom</option>
+        </select>
+        <div class="error" id="country"></div>
+     </div>&nbsp; 
+    <div class="gender"> 
+        <label> <p>Gender: </p></label> &nbsp;
+        <div class="form-inline" align="left">
+            <label> Male <input style="padding-right: -300px ;" type="radio" name="gender" value="male"> </label>
+            <label> 25-35 <input style="padding-right: -300px ;" type="radio" name="gender" value="male"> </label>
+ </div>
+        <div class="error" id="gender"></div>
+    </div> 
+
+    <p>Upload an Image</p>
+    <input type="file" id="file"
+        onchange="return fileValidation()" /> 
+
+
+
+
+        <div id="imagePreview"></div> 
+        <script> 
+            function fileValidation() { 
+                var fileInput =  
+                    document.getElementById('file'); 
+                  
+                var filePath = fileInput.value; 
+              
+                // Allowing file type 
+                var allowedExtensions =  
+                        /(\.jpg|\.jpeg|\.png|\.gif)$/i; 
+                  
+                if (!allowedExtensions.exec(filePath)) { 
+                    alert('Invalid file type'); 
+                    fileInput.value = ''; 
+                    return false; 
+                }  
+                else  
+                { 
+                   reader.readAsDataURL(fileInput.files[0]); 
+                    } 
+                } 
+        </script> 
+
+
+    <div class="button">
+        <a href="home.html">
+        <input type="submit" value="Submit"></a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="reset" value="Reset"></a>
+</div>
+</form>
+</body>
+</html>
+
+
+

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Registration Page</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>  
+    <body>
+        <div class="title">
+            <h1> LA STOFFA</h1>
+            
+          </div>
+      
+      <div class="loginbox">
+        <img src="1.png" class="avatar">
+
+         <h1>Your stylist is just around the corner....</h1>
+<form >
+  <p>Username</p><br>
+<input type="text" name="userid" placeholder="Enter Username"/><br>
+<p>Password</p><br>
+<input type="password" name="password" placeholder="Enter Password"/><br>
+<p>Telephone </p><br>
+<input type="number" name="phoneno" placeholder="Enter Phone Number"/><br>
+<p>Email id</p><br>
+<input type="email" name="email" placeholder="Enter Email Id"/><br>
+
+
+
+
+<input type="button" onclick="check(this.form)" value="Submit"/><br>
+<input type="reset" value="Cancel"/><br><br>
+
+</form>
+</div>
+<script language="javascript">
+
+
+  
+function check(form)
+{
+
+ if (form.userid.value == "")                                  
+    { 
+        window.alert("Invalid. Please enter your username."); 
+    } 
+   
+if (form.password.value == "")
+{
+  window.alert("Invalid . Please enter your password ");
+}
+if (form.phoneno.value == "")
+{
+  window.alert("Invalid . Please enter your phone number ");
+}
+
+
+
+    // Validate email address
+    if(form.email.value == "") {
+        printError("emailErr", "Please enter your email address");
+    } else {
+        // Regular expression for basic email validation
+        var regex = /^\S+@\S+\.\S+$/;
+        if(regex.test(email) === false) {
+            printError("emailErr", "Please enter a valid email address");
+        } else{
+            printError("emailErr", "");
+            emailErr = false;
+        }
+    }
+
+
+
+
+
+
+if (form.email.value == "")
+{
+  window.alert("Invalid . Please enter correct email id ");
+}
+
+
+
+
+
+ if(form.userid.value == "Shreya" ||form.userid.value == "Shravya"||form.userid.value == "Merin" && form.password.value == "123"||form.userid.value == "shreya" ||form.userid.value == "shravya" ||form.userid.value == "merin")
+  {
+    window.open('que.html')
+  }
+ else
+ {
+   alert("Error Password or Username")
+  }
+}
+</script>
+</body>
+</html>
