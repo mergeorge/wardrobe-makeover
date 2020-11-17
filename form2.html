@@ -10,10 +10,7 @@
 
 
 <script>
-// Defining a function to display error message
-function printError(elemId, hintMsg) {
-    document.getElementById(elemId).innerHTML = hintMsg;
-}
+
 
 // Defining a function to validate form 
 function validateForm() {
@@ -42,9 +39,10 @@ function validateForm() {
          dot = email.lastIndexOf(".");      
            
          if (at < 1 || ( dot - at < 2 )) {         
-            alert("Incorrect Email-ID")           
+            alert("Incorrect Email-ID");          
             return false;      
          }  
+         
     // Validate mobile number
     if (mobile == "") {   
              alert("Mobile number is required");  
