@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO8859-1" ?>
+<company>
+	<sponsor>
+		<name>Alfreds Futter kiste</name>
+		<contact>www.afk@gmail.com	</contact>
+		<country>Germany</country>
+        <no>4723-8473</no>
+    </sponsor>
+    <sponsor>
+		<name>Berglunds snabbköp</name>
+		<contact>www.bsp@hotmail.com</contact>
+		<country>Sweden</country>
+         <no>97-6458473</no>
+
+    </sponsor>
+    <sponsor>
+		<name>Centro comercial Moctezuma</name>
+		<contact>www.ccm23@gmail.com</contact>
+		<country>Mexico</country>
+        <no>3346-565-778</no>
+	</sponsor>
+	
+</company>

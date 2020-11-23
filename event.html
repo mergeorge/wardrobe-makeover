@@ -63,6 +63,22 @@ h2.lim1{
 text-shadow:black;
 }
 
+/* Dom styles*/
+
+
+table,th,td
+    {
+     border:1px solid black;
+     margin: 0 auto;
+
+    }
+    th,td{
+        padding: 5px;
+        background-color:beige;
+    }
+
+    
+
           </style>
           <!-- Header -->
     <header class="">
@@ -98,7 +114,7 @@ text-shadow:black;
 <h4>Explore photos & videos of Lakme Fashion Week at Vogue India</h4> <br>
 <iframe width="430" height="300" src="https://www.youtube.com/embed/TJWJ2HVlgfY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 &nbsp;&nbsp;
-<embed type="text/html" src="https://www.lisaadelhi.com/wp-content/uploads/2016/08/lisaa-lakhme-fashion.jpg" width="430" height="300"> </embed>
+<embed type="text/html" src="https://img.freepik.com/free-photo/pretty-young-stylish-sexy-woman-pink-luxury-dress-summer-fashion-trend-chic-style-sunglasses-blue-studio-background-shopping-holding-paper-bags-talking-mobile-phone-shopaholic_285396-2957.jpg?size=626&ext=jpg" width="430" height="300"> </embed>
 &nbsp;&nbsp;
 <object data="https://asia.media.fashionnetwork.com/m/c9ff/30c6/c95b/f1b1/798a/eddd/5235/f577/4e5b/fb11/fb11.jpg" width="400" height="300"sssss> </object>
 <br><br><br>
@@ -106,10 +122,66 @@ text-shadow:black;
      
 
     
+     <!-- Dom implementation -->
 
-<iframe width="100%" height="300" src="service.xml" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<a href="service.xml"><h4>Click to check out our latest offers</h4></a>
-
+     
+      <h1 style="text-align: center;">Our Sponsors</h1>
+      <button type="button" onclick="loadXML()">Contact our Sponsors</button>
+      <br><br>
+      <table  id="demo"></table>
+      <script>
+          function loadXML()
+          {
+              var xhttp=new XMLHttpRequest();
+              xhttp.onreadystatechange=function()
+              {
+                  if(this.readyState==4&&this.status==200)
+                  {
+                      myFunction(this);
+                  }
+              };
+              xhttp.open("GET","sponsors.xml",false);
+              xhttp.send();
+          }
+          function myFunction(xml)
+          {
+              var i;
+              var xmlDoc=xml.responseXML;
+              var t="<tr><th>NAME</th><th>CONTACT</th><th>COUNTRY</th><th>NUMBER</th></tr>";
+              var x=xmlDoc.getElementsByTagName("sponsor");
+              for(i=0;i<x.length;i++)
+              {
+                  t +="<tr><td>" +
+                  x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue +
+                  "</td><td>" +
+                  x[i].getElementsByTagName("contact")[0].childNodes[0].nodeValue +
+                  "</td><td>"+
+                      x[i].getElementsByTagName("country")[0].childNodes[0].nodeValue +
+                  "</td><td>"+
+                  x[i].getElementsByTagName("no")[0].childNodes[0].nodeValue +
+                  "</td></tr>";
+              }
+              document.getElementById("demo").innerHTML=t;
+          }
+      </script>
+  <br><br><br><br><br><br><br><br><br>
+  
+  
+  
+  <div onmouseover="mOver(this)" onmouseout="mOut(this)" 
+  style="background-color:wheat;opacity:1;width:100%;height:35px;padding:40px;font-size: 35px; text-align: center;">
+  Check out our latest offers</div>
+  
+  <script>
+  function mOver(obj) {
+    obj.innerHTML = "Thank You for visiting LaStoffa!"
+  }
+  
+  function mOut(obj) {
+    obj.innerHTML = "Check out our latest offers"
+  }
+  </script>
+<br>
 
     <!-- Site footer -->
     <footer class="site-footer">
