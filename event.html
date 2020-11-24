@@ -76,6 +76,12 @@ table,th,td
         padding: 5px;
         background-color:beige;
     }
+    button{
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+font-size:x-large;
+align-content: center;
+margin: auto;
+}
 
     
 
@@ -125,62 +131,70 @@ table,th,td
      <!-- Dom implementation -->
 
      
-      <h1 style="text-align: center;">Our Sponsors</h1>
-      <button type="button" onclick="loadXML()">Contact our Sponsors</button>
-      <br><br>
-      <table  id="demo"></table>
-      <script>
-          function loadXML()
-          {
-              var xhttp=new XMLHttpRequest();
-              xhttp.onreadystatechange=function()
-              {
-                  if(this.readyState==4&&this.status==200)
-                  {
-                      myFunction(this);
-                  }
-              };
-              xhttp.open("GET","sponsors.xml",false);
-              xhttp.send();
-          }
-          function myFunction(xml)
-          {
-              var i;
-              var xmlDoc=xml.responseXML;
-              var t="<tr><th>NAME</th><th>CONTACT</th><th>COUNTRY</th><th>NUMBER</th></tr>";
-              var x=xmlDoc.getElementsByTagName("sponsor");
-              for(i=0;i<x.length;i++)
-              {
-                  t +="<tr><td>" +
-                  x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue +
-                  "</td><td>" +
-                  x[i].getElementsByTagName("contact")[0].childNodes[0].nodeValue +
-                  "</td><td>"+
-                      x[i].getElementsByTagName("country")[0].childNodes[0].nodeValue +
-                  "</td><td>"+
-                  x[i].getElementsByTagName("no")[0].childNodes[0].nodeValue +
-                  "</td></tr>";
-              }
-              document.getElementById("demo").innerHTML=t;
-          }
-      </script>
-  <br><br><br><br><br><br><br><br><br>
-  
-  
-  
-  <div onmouseover="mOver(this)" onmouseout="mOut(this)" 
-  style="background-color:wheat;opacity:1;width:100%;height:35px;padding:40px;font-size: 35px; text-align: center;">
-  Check out our latest offers</div>
-  
-  <script>
-  function mOver(obj) {
-    obj.innerHTML = "Thank You for visiting LaStoffa!"
-  }
-  
-  function mOut(obj) {
-    obj.innerHTML = "Check out our latest offers"
-  }
-  </script>
+      <body>
+        <h1 style="text-align: center;">Our Sponsors</h1>
+        <button id="showtrc" type="button" onclick="displaytrack()"> Contact our sponsors</button>
+    
+        <p id='showtrc'></p>
+        <table  id="demo"></table>
+        <script>
+            var x,xmlhttp,xmlDoc;
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET","sponsors.xml",false);
+            xmlhttp.send();
+            xmlDoc = xmlhttp.responseXML;
+            x = xmlDoc.getElementsByTagName("sponsor");
+    table="<tr><th>NAME</th><th>CONTACT</th></tr>";
+    for (i = 0; i <x.length; i++) {
+      table += "<tr onclick='displaytrack(" + i + ")'><td>";
+      table += x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+      table += "</td><td>";
+      table +=  x[i].getElementsByTagName("contact")[0].childNodes[0].nodeValue;
+      table += "</td></tr>";
+    }
+    document.getElementById("demo").innerHTML = table;
+    
+    
+    
+                
+    
+    function displaytrack(i) {
+      document.getElementById("showtrc").innerHTML =
+      "Name :" +
+      x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue +
+      "<br>Contact: " +
+      x[i].getElementsByTagName("contact")[0].childNodes[0].nodeValue +
+      "<br>Country: " +
+      x[i].getElementsByTagName("country")[0].childNodes[0].nodeValue +
+      
+      "<br>Number: " +
+      x[i].getElementsByTagName("no")[0].childNodes[0].nodeValue;
+    
+    }
+            
+        </script>
+    <br><br><br><br><br><br><br><br><br>
+    
+    
+    
+    <div onmouseover="mOver(this)" onmouseout="mOut(this)" 
+    style="background-color:wheat;opacity:1;width:100%;height:20px;padding:40px;font-size: 35px; text-align: center;">
+    Check out our latest offers</div>
+    
+    <script>
+    function mOver(obj) {
+      obj.innerHTML = "Thank You for visiting LaStoffa!"
+    }
+    
+    function mOut(obj) {
+      obj.innerHTML = "Check out our latest offers"
+    }
+    </script>
+    
+    
+    
+    </body>
+    </html>
 <br>
 
     <!-- Site footer -->
