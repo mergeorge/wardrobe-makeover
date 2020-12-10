@@ -252,11 +252,97 @@
 color:#bbb;
 }
 
+.wel{
+            text-align: center; 
+        font-size:xx-large; 
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      }
+      table{
+        margin-top: 2%;
+          margin-left: auto;
+          margin-right: auto;
+        border-collapse: collapse;
 
+      }
+      th,td
+      {
+          margin-top: 2%;
+          margin-left: auto;
+          margin-right: auto;
+          border: 2px solid;
 
+      }
+      th,td
+      {
+          font-size: 1.2em;
+          color: black; 
+          text-align: center;
+          padding: 20px;
+          font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+      }
+      th  
+      {
+         background-color: burlywood;
+      }
   </style>
+  <script src="angular.min.js"></script>
+  <script>
+     angular.module("MyApp",[])
+.controller("MyCtrl",function($scope)
+{
+ var cloth=[
+     {prod_id:'2371',category:'Men',item:'Pants',price:1000},
+     {prod_id:'2372',category:'Women',item:'Stole',price:2000},
+     {prod_id:'3879',category:'Men',item:'Jacket',price:1500},
+     {prod_id:'9876',category:'Kids',item:'Floral onesie',price:2500},
+     {prod_id:'3872',category:'Women',item:'Tye and dye tee',price:800},
+     {prod_id:'9089',category:'Women',item:'Jeans',price:500},
 
-  <body>
+ ];
+ $scope.cloth=cloth;
+ $scope.rowlimit=10;
+ $scope.save=function()
+ {
+     var index=getindex($scope.prod_id);
+     $scope.cloth[index].category=$scope.category;
+     $scope.cloth[index].item=$scope.item;
+     $scope.cloth[index].price=$scope.price;    
+ }
+ $scope.add=function()
+ {
+     $scope.cloth.push({
+         prod_id:$scope.prod_id,category:$scope.category,item:$scope.item,price:$scope.price
+     });
+ }
+ function getindex(prod_id)
+ {
+     for(var i=0;i<$scope.cloth.length;i++)
+     if($scope.cloth[i].prod_id==prod_id)
+     return i;
+     return -1;
+ }
+ $scope.edit=function(prod_id)
+ {
+     var index=this.$index;
+     var cloth=$scope.cloth[index];
+     $scope.prod_id=cloth.prod_id;
+     $scope.category=cloth.category;
+     $scope.item=cloth.item;
+     $scope.price=cloth.price;
+ }
+ $scope.delete=function()
+ {
+     var result=confirm('Are you sure you want to delete?');
+     if(result==true)
+     {
+         var index=this.$index;
+         $scope.cloth.splice(index,1);
+     }
+ };
+});
+  </script>
+
+  
 
     
 
@@ -311,48 +397,132 @@ color:#bbb;
               <code>audio</code> element.
       </audio>
   </figure>
-  
-<div class="find-us">
-      <div class="container">
-        <div class="row">
-          <div class="section-heading">
-              <h2>Our Location on Maps</h2>
-            </div>
-          </div>
-          <div class="col-md-8">
 
-            <div id="map">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.1580571778322!2d77.59633601413512!3d12.96173601860332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15d1151a855f%3A0xb68eabf3c66dddb9!2sLangford%20Rd%2C%20Akkithimana%20Halli%2C%20Shanti%20Nagar%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1601810912551!5m2!1sen!2sin" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-            </div>
-          </div>
+
+  <script>
+		function getWelcome(){
+				
+			var ajaxRequest = new XMLHttpRequest();
+			ajaxRequest.onreadystatechange = function(){
+			
+				if(ajaxRequest.readyState == 4){
+					//the request is completed, now check its status
+					if(ajaxRequest.status == 200){
+						//turn JSON into object
+						var jsonObj = JSON.parse(ajaxRequest.responseText);
+						
+						//get random object from array
+						var randomMessagesArray = jsonObj.randomMessages;
+						var randomIndex = Math.floor(Math.random()*randomMessagesArray.length);
+						var messageObj = randomMessagesArray[randomIndex];
+						
+						//use that object to set content and color
+						document.getElementById("welcome").innerHTML = messageObj.message;
+						document.getElementById("welcome").style.color = messageObj.color;
+						
+					}
+					else{
+						console.log("Status error: " + ajaxRequest.status);
+					}
+				}
+				else{
+					console.log("Ignored readyState: " + ajaxRequest.readyState);
+				}
+			
+			
+			}
+			ajaxRequest.open('GET', 'new.json');
+			ajaxRequest.send();
+		}
+	
+	</script>	
+</head>
+<body onload="getWelcome()" ng-app="MyApp">
+	<div id="welcome" class="wel"></div>
+	
+
+
+
+
+
+
+
+
+<br><br>
+
+  
+
           
-          </div></div></div>
-    
-    <br><br>
+    <div ng-controller="MyCtrl">
+      <center><h4 class="bar" style="color:black">Rows to Display : <input type="number"  step="1" min="0" max="6" ng-model="rowlimit" /></center></h4></style>
+      <center><h4 class="bar" style="color:black">Search : <input type="text" placeholder="Search " ng-model="Search" /></center></h4></style>
+      <table>
+       <tr>
+           <th>Serial #</th>
+           <th>Prod_ID</th>
+           <th>Category</th>
+           <th>Item</th>
+           <th>Price</th>
+           <th>Operations</th>
           
-            <h2 class="sponsor"> Our Sponsors </h2><br>
-<table id="customers">
-  <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
-  </tr>
-  <tr>
-    <td>Alfreds Futter kiste</td>
-    <td>www.afk@gmail.com</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Berglunds snabbköp</td>
-    <td>www.bsp@hotmail.com</td>
-    <td>Sweden</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>www.ccm23@gmail.com</td>
-    <td>Mexico</td>
-  </tr>
-  </table>
+       </tr>
+          <tbody>
+              <tr ng-repeat="cloth in cloth | limitTo:rowlimit |filter:Search| orderBy:'price'">
+                  <td>{{$index}}</td>
+                  <td>{{cloth.prod_id}}</td>
+                  <td>{{cloth.category | uppercase}}</td>
+                  <td>{{cloth.item | lowercase}}</td>
+                  <td> &#8377;{{cloth.price | number:0 }}</td>
+                  <td>
+                   <a href="#" ng-click="delete()">Delete</a> |
+                   <a href="#" ng-click="edit(cloth.prod_id)">Edit</a>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  <h2><br><center>Product Information</center></h2>
+<table>
+   <tr>
+       <td>Prod_ID</td>
+       <td><input type="text" ng-model="prod_id"></td>
+   </tr>
+   <tr>
+       <td>Category</td>
+       <td><input type="text" ng-model="category"></td>
+   </tr>
+   <tr>
+       <td>Item of Clothing</td>
+       <td><input type="text" ng-model="item"></td>
+   </tr>
+   
+   <tr>
+       <td>Price</td>
+       <td><input type="text" ng-model="price"></td>
+   </tr>
+   <tr>
+       <td>&nbsp;</td>
+       <td><input type="button" class="bar" value="ADD" ng-click="add()">
+       <input type="button" class="bar" value="SAVE" ng-click="save()"></td>
+   </tr>
+</table><br>
+</div>
+ </section>
+ <!-- end section -->
+ <div class="find-us">
+  <div class="container">
+    <div class="row">
+      <div class="section-heading">
+          <h2>Our Location on Maps</h2>
+        </div>
+      </div>
+      <div class="col-md-8">
+
+        <div id="map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.1580571778322!2d77.59633601413512!3d12.96173601860332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15d1151a855f%3A0xb68eabf3c66dddb9!2sLangford%20Rd%2C%20Akkithimana%20Halli%2C%20Shanti%20Nagar%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1601810912551!5m2!1sen!2sin" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+      </div>
+      
+      </div></div></div>
 
 <br><br>
     
@@ -362,7 +532,7 @@ color:#bbb;
           <div class="row">
             
               <h6>About</h6>
-              <p class="text-justify">he brains behind LaStoffa, works with men and women helping them to understand their specific 
+              <p class="text-justify">The brains behind LaStoffa, works with men and women helping them to understand their specific 
     fashion choices, improve their wardrobe and most importantly have their personal stylist just a click away.
     Enable us to display our closet suggestions to assist you through the entire season and beyond.
    So go ahead Explore!!And get an idea how we sync with your style.</p>

@@ -82,7 +82,10 @@ font-size:x-large;
 align-content: center;
 margin: auto;
 }
-
+ .wel{
+   text-align: center;
+   font-size: larger;
+ }
     
 
           </style>
@@ -177,6 +180,38 @@ margin: auto;
     
     
     
+	<script>
+		function getWelcome(){
+			var ajaxRequest = new XMLHttpRequest();
+			ajaxRequest.onreadystatechange = function(){
+			
+				if(ajaxRequest.readyState == 4){
+					//the request is completed, now check its status
+					if(ajaxRequest.status == 200){
+						document.getElementById("welcome").innerHTML = ajaxRequest.responseText;
+					}
+					else{
+						console.log("Status error: " + ajaxRequest.status);
+					}
+				}
+				else{
+					console.log("Ignored readyState: " + ajaxRequest.readyState);
+				}
+			
+			
+			}
+			ajaxRequest.open('GET', 'he.json');
+			ajaxRequest.send();
+		}
+	
+	</script>	
+</head>
+<body>
+	<p onclick="getWelcome()">Click here to get contact details.</p>
+	<p id="welcome" class="wel"></p>
+</body>
+    
+    
     <div onmouseover="mOver(this)" onmouseout="mOut(this)" 
     style="background-color:wheat;opacity:1;width:100%;height:20px;padding:40px;font-size: 35px; text-align: center;">
     Check out our latest offers</div>
@@ -192,9 +227,7 @@ margin: auto;
     </script>
     
     
-    
-    </body>
-    </html>
+   
 <br>
 
     <!-- Site footer -->
